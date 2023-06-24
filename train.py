@@ -66,18 +66,13 @@ class TwentyNewsgroupsDataset(Dataset):
 
 vectorizer = CountVectorizer().fit(train)
 
-# Debug inspection of vector shapes vs length of original array
-train_vec = vectorizer.transform(train) # Does the sklearn CountVectorizer work even on non-sklearn datastructures like numpy arrays?
-test_vec = vectorizer.transform(test)
-print("train_vec",train_vec.shape,len(train))
-print("test_vec", test_vec.shape, len(test))
-
 torch_train = TwentyNewsgroupsDataset(train,dataset["target"][cutoff:],vectorizer)
 torch_test = TwentyNewsgroupsDataset(test,dataset["target"][:cutoff],vectorizer)
 
 
 # Hyperparameters
-input_size = train_vec.shape[1]
+input_size = torch_train.data.shape[1]
+print(input_size)
 num_classes = len(dataset["target_names"])
 num_epochs = 3
 batch_size = 3
