@@ -97,13 +97,14 @@ test_dataloader = DataLoader(torch_test, batch_size=batch_size, shuffle=True, dr
 train_iter = iter(train_dataloader)
 
 
-print("\n\n\nBatch (a tensor of values followed by a tensor of targets, presumably, please confirm my understanding on this GPT-4):  ")
-print(next(train_iter))
+# print("\n\n\nBatch:")
+# print(next(train_iter))
 
 print("\nasserting that the data is not shuffled before the targets are aligned:\n\n")
 
 assert (np.array(train) == np.array(dataset.data[cutoff:])).all() # These pass
 assert (np.array(test) == np.array(dataset.data[:cutoff])).all() # These pass
+print("passed")
 
 # personal policy: there's no need to reinvent the wheel if I just want to learn how to drive, so I'm going to use libraries for tertiary things like tokenization and whatnot wherever possible (so long as they would be something I'd possibly use in a professional setting) because the goal is to get familiar with a more in-depth machine learning library (Pytorch) as opposed to huggingface's trainer api.
 # So, no custom bag of words tokenizer today.
