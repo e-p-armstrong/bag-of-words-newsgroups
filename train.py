@@ -1,5 +1,7 @@
 # I will approach my own machine learning iteratively: starting trying to do a bunch, and doing it poorly; and then, through correction and instruction, getting better at it as time goes on.
 
+
+# Note that since the point of this project was to familiarize myself with the Pytorch library (as opposed to the huggingface Trainer API, which I'd used prior), it's covered with rough notes, annotations, and comments so that it can serve as a reference for me in the future. It's not... clean. And the code isn't exactly robust either. But hey it works and gets 84% accuracy after 1 epoch! So there's that.
 import sklearn.datasets
 import torch
 import torch.nn as nn
@@ -42,7 +44,7 @@ print("\n\n\n-----------------Viewing done---------------\n\n\n")
 
 
 
-
+ 
 
 
 # Train/test split
@@ -102,13 +104,6 @@ print("\nasserting that the data is not shuffled before the targets are aligned:
 
 assert (np.array(train) == np.array(dataset.data[cutoff:])).all() # These pass
 assert (np.array(test) == np.array(dataset.data[:cutoff])).all() # These pass
-
-# DATA PROCESSING COMPLETE!!!!!!!!!
-# BADASS OVER HERE~!
-# WOOOOOOOO
-
-# alright now to actually make the model
-# ...tomorrow. Tsukareta.
 
 # personal policy: there's no need to reinvent the wheel if I just want to learn how to drive, so I'm going to use libraries for tertiary things like tokenization and whatnot wherever possible (so long as they would be something I'd possibly use in a professional setting) because the goal is to get familiar with a more in-depth machine learning library (Pytorch) as opposed to huggingface's trainer api.
 # So, no custom bag of words tokenizer today.
